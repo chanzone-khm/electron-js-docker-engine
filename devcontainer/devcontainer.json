@@ -1,0 +1,15 @@
+{
+	"name": "js",
+
+	// Docker Composeの設定ファイルパス
+	"dockerComposeFile": ["../docker-compose.yml"],
+
+	// コンテナのサービス名
+	"service": "app",
+
+	// VSCodeで開くコンテナ内のパス
+	"workspaceFolder": "/home/docker/app",
+
+	// コンテナ内で使用する拡張機能
+	"extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+}

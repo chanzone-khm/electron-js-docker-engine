@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Log Analysis Tool</title>
+
+  <!-- bootstrap CDN-->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> -->
+
+  <!-- bootstrap nodemodules-->
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+  <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="../node_modules/poppers.js/dist/umd/popper.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- datatables CDN-->
+  <!-- <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.4/css/select.bootstrap5.min.css" />
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.4/js/dataTables.select.min.js"></script> -->
+
+
+
+
+  <!-- datatables nodemodules-->
+  <link rel="stylesheet" href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="../node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
+  <link rel="stylesheet" href="../node_modules/datatables.net-select-bs5/css/select.bootstrap5.min.css">
+
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+  <script src="../node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+  <script src="../node_modules/datatables.net-select/js/dataTables.select.min.js"></script>
+  <script src="../node_modules/datatables.net-select-bs5/js/select.bootstrap5.min.js"></script>
+
+  <!-- Plotly.js CDN -->
+  <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+  <!-- Plotly.js nodemodules -->
+  <script src="../node_modules/plotly.js-dist-min/plotly.min.js"></script>
+
+  <!-- danfo.js CDN -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/danfojs@1.0.2/lib/bundle.min.js"></script> -->
+  <!-- danfo.js nodemodules -->
+  <script src="../node_modules/danfojs/lib/bundle.js"></script>
+
+
+  <!-- original css -->
+  <link rel="stylesheet" href="css/base.css">
+
+</head>
+
+<body>
+  <!-- header begin -->
+  <header id="top">
+    <div class="header_content wrapper">
+
+        <h1>
+          <a href="index.html">
+            <img class="header_logo" src="images/logo(grass3).png" >
+          </a>
+        </h1>
+        <nav>
+        <!-- <ul class="row gy-2 gx-3 align-items-center"> -->
+          <ul>
+            <li class = "file">
+              <input class="form-control form-control-lg btn-outline-dark" id="file" type="file">
+            </li>
+            <li>
+              <!-- <button type="button" id="graph" class="btn btn-success btn-lg">OutPut</button> -->
+              <a id="graph" class="btn btn-graph"><span>TableOut</span></a>
+            </li>
+            <li>
+              <!-- <button type="button" id="refresh" class="btn btn-warning btn-lg">Refresh</button> -->
+              <a id="refresh" class="btn btn-refresh"><span>Refresh</span></a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+<div>
+    <!-- pass/Fail -->
+    <p class = "chkboxStr">
+      <input type = "checkbox"id = "PassFail" value = "True" class = "chkbox">
+      Separate PassFail Data
+    </p>
+
+    <!-- data 表化 -->
+    <table id="CSVtable" class="table table-bordered">
+      <thead id="tableHead">
+        <tr id="tableHeadRow"></tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+  </div>
+
+    <!-- <p id="staticVal" class = "statistics"></p>
+    <p id="staticValFail" class = "statistics"></p> -->
+
+    <!-- 統計量表 -->
+    <table id = "staticsData">
+      <thead id = "staticsDataHeadRow">
+      </thead>
+      <tbody id = "staticsDataBody">
+        <tr id = "staticsDataPassRow"></tr>
+        <tr id = "staticsDataFailRow"></tr>
+        <tr id = "staticsDataAllRow"></tr>
+      </tbody>
+    </table>
+
+    <!-- Graph描画用 -->
+    <div id="histogram" style="width:600px; height:400px;" class="graph"></div>
+    <div id="boxplot" style="width:600px; height:400px;" class="graph"></div>
+    <div id="scatter" style="width:600px; height:400px;" class="graph"></div>
+
+  <!-- 3rd party .js file -->
+
+  <!-- original .js file -->
+  <script src="js/ReadCSV.js"></script>
+  <script src="js/datatable.js"></script>
+  <script src="js/histogram.js"></script>
+  <script src="js/boxplot.js"></script>
+  <script src="js/danfo2array_graph-func.js"></script>
+  <script src="js/scatter.js"></script>
+  <script src="js/statistic_func.js"></script>
+
+</body>
+
+</html>
