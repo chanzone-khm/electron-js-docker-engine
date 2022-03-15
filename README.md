@@ -21,7 +21,7 @@ WSL2とdocker engineをインストールするやり方は[こちら](https://w
 ```
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 ```
-5. `docker exec -it {container name} bash` でコンテナの中に入る。{container name}は対象となるコンテナ名 {}はつけない。
+5. `docker exec -it {container name} bash` でコンテナの中に入る。{container name}は対象となるコンテナ名 {}はつけない。多分デフォルトではelectron-js-docker-engine_app_1 がコンテナ名
 6. コンテナ側で `yarn` を実行(package.json に記載されたアプリがインストールされる)
 7. `yarn start` で electron が立ち上がって Hello world が表示されたら OK
 
